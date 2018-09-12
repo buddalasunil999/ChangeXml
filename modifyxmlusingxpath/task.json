@@ -1,0 +1,60 @@
+{
+    "id": "81626048-825C-4B22-B62E-20ED7B309334",
+    "name": "ModifyXmlUsingXpath",
+    "friendlyName": "Modify xml file content using XPath expression",
+    "description": "Replaces content in an xml file by the value provided using the XPath expression",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "visibility": [
+        "Build",
+        "Release"
+    ],
+    "author": "Sunil Buddala",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
+    },
+    "instanceNameFormat": "ModifyXmlUsingXpath: ModifyFile $(SourcePath)",
+    "groups": [
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": false
+        }
+    ],
+    "inputs": [
+        {
+            "name": "SourcePath",
+            "type": "filePath",
+            "label": "Path to source file",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Source file whose content needs to be modified with user-defined value"
+        },
+        {
+            "name": "XPath",
+            "type": "string",
+            "label": "XPath expression to look in the source file",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "for example: /configuration/connectionStrings/add[@name='Master']/@connectionString"
+        },
+        {
+            "name": "Value",
+            "type": "string",
+            "label": "Value that needs to be updated in the source file using the xpath",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "for example: Server=StagingServer;Database=Master;Integrated Security=True"
+        }
+    ],
+    "execution": {
+        "Powershell": {
+            "target": "$(currentDirectory)\\modifyxmlusingxpath.ps1",
+            "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [ "windows" ]
+        }
+    }
+}
